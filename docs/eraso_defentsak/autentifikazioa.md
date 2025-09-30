@@ -8,9 +8,9 @@
 - **Pasahitz errepikapena**: Erabiltzaileek pasahitz berbera erabiltzen dute hainbat zerbitzutan
 - **Pribatutasuna**: Legezko erabiltzaileek ere ezingo lituzkete pasahitzak ikusi (erabat) — hori printzipio bat da.
 
-### Nola gordetu pasahitzak (PHP)
+### Nola gorde pasahitzak (PHP)
 
-PHP-n bcrypt edo Argon2 erabiltzeko password_hash() eta password_verify() funtzioak erabiltzen dira; PHPk automatikoki gatza kudeatzen du, beraz ez da gatza eskuz sortu behar.
+PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual/es/function.password-hash.php) eta [password_verify()](https://www.php.net/manual/es/function.password-verify.php) funtzioak erabiltzen dira; PHPk automatikoki gatza kudeatzen du, beraz ez da gatza eskuz sortu behar.
 
 #### Sortu eta gorde pasahitza (erregistratzean)
 
