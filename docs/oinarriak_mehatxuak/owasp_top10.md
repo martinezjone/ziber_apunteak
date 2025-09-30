@@ -25,7 +25,7 @@ Erabiltzaileek soilik baimendutako ekintzak bakarrik egin ditzaten mugatzea huts
 - "Baimenik ez" jarrerarekin hasi
 - Erabiltzaile-zerbitzari aldean sarbidea egiaztatu
 
-- [Informazio gehiago >> Broken Access Control](../ariketak/broken_access_control.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Broken Access Control](../ariketak/broken_access_control.md)</span>
 
 ## 2. Zifraketa-akatsak (Cryptographic Failures)
 
@@ -43,7 +43,7 @@ Datuak zifratzeko erabiltzen diren ahultasunak edo akatsak.
 - HTTPS erabili beti
 - Gakoak modu seguruan gorde
 
-- [Informazio gehiago >> Cryptographic Failures](../ariketak/cryptographic_failures.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Cryptographic Failures](../ariketak/cryptographic_failures.md)</span>
 
 ## 3. Injekzioa (Injection)
 
@@ -109,7 +109,7 @@ LDAP Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa e
 - Sarrera guztiak balioztatu eta garbitu
 - Pribilegio minimoen printzipioa aplikatu
 
-- [Informazio gehiago >> Injection](../ariketak/injection.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Injection](../ariketak/injection.md)</span>
 
 ## 4. Diseinu ez segurua (Insecure Design)
 
@@ -127,7 +127,7 @@ Segurtasun-arazoak diseinu-fasean sortzen direnean, eta ez bakarrik inplementazi
 - Mehatxuen ereduak egin
 - Abusu-kasuak identifikatu eta prebenitu
 
-- [Informazio gehiago >> Insecure Design](../ariketak/insecure_design.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Insecure Design](../ariketak/insecure_design.md)</span>
 
 ## 5. Konfigurazio oker eta ahula (Security Misconfiguration)
 
@@ -145,7 +145,7 @@ Segurtasun-konfigurazio egokirik ez izatea edo konfigurazio okerrak izatea.
 - Automatizatu konfigurazioa
 - Eguneratu eta berrikusi konfigurazioa maiz
 
-- [Informazio gehiago >> Security Misconfiguration](../ariketak/security_misconfiguration.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Security Misconfiguration](../ariketak/security_misconfiguration.md)</span>
 
 ## 6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)
 
@@ -163,7 +163,7 @@ Hirugarreneko liburutegi eta osagaietan dauden ahultasunak.
 - Ez erabili osagai zaharkiturik
 - Eskaneatu osagaiak ahultasunen bila
 
-- [Informazio gehiago >> Vulnerable and Outdated Components](../ariketak/vulnerable_and_outdated_components.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Vulnerable and Outdated Components](../ariketak/vulnerable_and_outdated_components.md)</span>
 
 ## 7. Autentifikazio-akatsak (Identification and Authentication Failures)
 
@@ -181,7 +181,7 @@ Erabiltzaileak identifikatu eta autentifikatzeko arazoak.
 - Erabili pasahitz-politika sendoak
 - Egiaztatu saio-identifikatzaileak
 
-- [Informazio gehiago >> Identification and Authentication Failures](../ariketak/identification_and_authentication_failures.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Identification and Authentication Failures](../ariketak/identification_and_authentication_failures.md)</span>
 
 ## 8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)
 
@@ -199,7 +199,7 @@ Datuen osotasuna eta jatorriaren ziurtasuna arriskuan jartzen direnean.
 - Egiaztatu kode eta datuen jatorria
 - Inplementatu osotasunaren egiaztapena
 
-- [Informazio gehiago >> Software and Data Integrity Failures](../ariketak/software_and_data_integrity_failures.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Software and Data Integrity Failures](../ariketak/software_and_data_integrity_failures.md)</span>
 
 ## 9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)
 
@@ -217,7 +217,7 @@ Erasoak detektatu eta erantzuteko gaitasun falta.
 - Konfiguretu alerta automatikoak
 - Planifikatu erantzun-prozedurak
 
-- [Informazio gehiago >> Security Logging and Monitoring Failures](../ariketak/security_logging_and_monitoring_failures.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Security Logging and Monitoring Failures](../ariketak/security_logging_and_monitoring_failures.md)</span>
 
 ## 10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)
 
@@ -235,7 +235,7 @@ Erasotzaileak zerbitzariak barne-sarean egindako eskaerak kontrolatzen dituenean
 - Erabili zerrenda zuri bat onartutako helbideentzako
 - Ezarri konexio-mugen eta denbora-mugen politika
 
-- [Informazio gehiago >> Server-Side Request Forgery](../ariketak/server_side_request_forgery.md)
+<span style="color: orange; font-style: italic;">[Informazio gehiago >> Server-Side Request Forgery](../ariketak/server_side_request_forgery.md)</span>
 
 ## Hurrengo urratsak
 
