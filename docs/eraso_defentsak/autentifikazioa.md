@@ -1,189 +1,142 @@
-# 2.2 Autentifikazio eta saioen segurtasuna
+# 3.2 Autentifikazio eta Saioen Segurtasuna
 
-## Pasahitzen kudeaketa segurua
+## Pasahitzen Kudeaketa Segurua
 
 ### Zergatik ez da nahikoa pasahitzak zuzenean gordetzea?
-- Datuak lapurtuz gero, erabiltzaileen pasahitzak eskuragarri egongo lirateke
-- Erabiltzaileek pasahitz berbera erabiltzen dute hainbat zerbitzutan
-- Legezko erabiltzaileak ere ezingo lituzke pasahitzak ikusi
 
-### Pasahitzak hasheatu
+- **Segurtasun arriskua**: Datuak lapurtuz gero, erabiltzaileen pasahitzak eskuragarri egongo lirateke
+- **Pasahitz errepikapena**: Erabiltzaileek pasahitz berbera erabiltzen dute hainbat zerbitzutan
+- **Pribatutasuna**: Legezko erabiltzaileek ere ezingo lituzkete pasahitzak ikusi (erabat) — hori printzipio bat da.
 
-#### bcrypt erabiliz (Python)
+### Nola gordetu pasahitzak (PHP)
 
-```python
-import bcrypt
+PHP-n bcrypt edo Argon2 erabiltzeko password_hash() eta password_verify() funtzioak erabiltzen dira; PHPk automatikoki gatza kudeatzen du, beraz ez da gatza eskuz sortu behar.
 
-def sortu_pasahitza(pasahitza: str) -> bytes:
-    # Gatza sortu ausaz
-    gatza = bcrypt.gensalt()
-    # Pasahitza hasheatu
-    hash_ondarra = bcrypt.hashpw(pasahitza.encode('utf-8'), gatza)
-    return hash_ondarra
+#### Sortu eta gorde pasahitza (erregistratzean)
 
-def egiaztatu_pasahitza(pasahitza: str, gordetako_hash: bytes) -> bool:
-    # Pasahitza egiaztatu
-    return bcrypt.checkpw(pasahitza.encode('utf-8'), gordetako_hash)
+```php
+    // register.php (adibidea)
+    $password = $_POST['password']; // beti balidatu/egiaztatu lehenago
 
-# Adibidea
-erabiltzaile_pasahitza = "nire_pasahitz_sekretua"
-hash_ondarra = sortu_pasahitza(erabiltzaile_pasahitza)
-print(f"Gordetako hasha: {hash_ondarra.decode()}")
+    // PASSWORD_DEFAULT erabil dezakezu (gaur egungo bertsioan bcrypt edo hobea izango da)
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
-# Egiaztatu
-doitu = egiaztatu_pasahitza("pasahitz_okerra", hash_ondarra)
-print(f"Pasahitz okerra: {doitu}")  # False
-
-doitu = egiaztatu_pasahitza(erabiltzaile_pasahitza, hash_ondarra)
-print(f"Pasahitz zuzena: {doitu}")  # True
+    // Gorde $hash datu-basera (PDO erabiliz)
+    $stmt = $pdo->prepare("INSERT INTO users (email, password_hash) VALUES (:email, :hash)");
+    $stmt->execute([':email' => $_POST['email'], ':hash' => $hash]);
 ```
 
-### Gatza (Salt) zergatik da garrantzitsua?
-- Pasahitz berdinak hash desberdinak sortzen ditu
-- Eraso aurrez kalkulatuek (rainbow tables) ez dute funtzionatuko
-- Erasotzaileak ezin du hash berdina duten bi erabiltzaile identifikatu
+#### Egiaztatu pasahitza sartzean
 
-## Saioen kudeaketa segurua
+```php
+    // login.php
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-### Cookie seguruak konfiguratu
+    $stmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE email = :email LIMIT 1");
+    $stmt->execute([':email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-**Express.js adibidea:**
-```javascript
-const session = require('express-session');
-const crypto = require('crypto');
-
-// Sortu ausazko gako sekretua sesioen sinadurak egiteko
-const SESSION_SECRET = crypto.randomBytes(32).toString('hex');
-
-app.use(session({
-    secret: SESSION_SECRET,
-    name: 'sessionId',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: true,      // HTTPS bidez bakarrik bidali
-        httpOnly: true,    // JavaScript-ek ezin du atzitu
-        sameSite: 'lax',   // CSRF erasoetatik babesteko
-        maxAge: 1000 * 60 * 60 * 24, // 1 egun
-        domain: '.zure-domeinua.eus'
-    }
-}));
-```
-
-### JWT (JSON Web Tokens)
-
-**Token bat sortu eta egiaztatu (Node.js):**
-
-```javascript
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-
-// Ingurune-aldagaitik kargatu edo sortu gako sekretu sendo bat
-const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
-
-// Token bat sortu
-function sortuTokena(erabiltzailea) {
-    return jwt.sign(
-        {
-            sub: erabiltzailea.id,
-            email: erabiltzailea.email,
-            // Ez sartu informazio sentikorrik
-        },
-        JWT_SECRET,
-        { 
-            expiresIn: '1h',
-            issuer: 'ZureAplikazioa',
-            audience: 'zureaplikazioa.eus'
+    if ($user && password_verify($password, $user['password_hash'])) {
+    // Arrakastaz egiaztatu
+    // Bertsio berritzailea behar bada berriro-hash egin:
+        if (password_needs_rehash($user['password_hash'], PASSWORD_DEFAULT)) {
+            $newHash = password_hash($password, PASSWORD_DEFAULT);
+            $upd = $pdo->prepare("UPDATE users SET password_hash = :hash WHERE id = :id");
+            $upd->execute([':hash' => $newHash, ':id' => $user['id']]);
         }
-    );
-}
-
-// Token bat egiaztatu
-function egiaztatuTokena(token) {
-    try {
-        const decoded = jwt.verify(token, JWT_SECRET, {
-            issuer: 'ZureAplikazioa',
-            audience: 'zureaplikazioa.eus'
-        });
-        return { baliozkoa: true, edukia: decoded };
-    } catch (error) {
-        return { 
-            baliozkoa: false, 
-            errorea: error.message 
-        };
+        // Saioa hasi, etab.
+    } else {
+        // Ok
     }
-}
-
-// Adibidea
-const erabiltzailea = { id: 123, email: 'erabiltzailea@adibidea.eus' };
-const token = sortuTokena(erabiltzailea);
-console.log('Sortutako tokena:', token);
-
-const emaitza = egiaztatuTokena(token);
-console.log('Tokena egiaztatuta:', emaitza);
 ```
 
-## Autentifikazio Anizkoitza (MFA)
+### Pasahitz politika eta bestelako neurriak
 
-### Zergatik erabili MFA?
-- Pasahitzak konprometitu arren, sarbidea eragozten du
-- "Zerbait dakizu" + "Zerbait duzu" + "Zara zu"
+- Gutxienez 8+ karaktere (hobeto 12+), baina fokusatu passphrases-ean eta kontuan izanda erraztasuna erabiltzailearen esperientzian.
+- Erabil ezazu password strength meter frontend-era baina ez itxi onartu indarrez: informatu bakarrik.
+- Konta-itzali politikak (lockout) edo tasa-mugak (rate limiting) sartu saiakerak gehiegi badira.
+- Beti erabili TLS/HTTPS.
 
-### MFA motak:
-1. **Aplikazio autentifikatzaileak** (Google Authenticator, Authy, Microsoft Authenticator)
-2. **SMS kodea** (ez da hain segurua SIM swap delako erasoengatik)
-3. **Hardware gakoak** (YubiKey, Titan Security Key)
-4. **Beharrezko aplikazioak** (banku aplikazioak, Google Prompt)
+## Saioen Kudeaketa Segurua
 
-### OTP (One-Time Password) inplementazioa
+### Cookie Seguruak Konfiguratzea
 
-```python
-import pyotp
-import qrcode
+Ezarri cookie-aren parametro seguruak session_set_cookie_params() erabiliz session_start() aurretik.
 
-def konfiguratuMFA(erabiltzaile_izena):
-    # Sortu gako sekretu berria erabiltzailearentzat
-    gakoa = pyotp.random_base32()
-    
-    # Sortu OTP URI bat QR kodea sortzeko
-    totp_uri = pyotp.totp.TOTP(gakoa).provisioning_uri(
-        name=erabiltzaile_izena,
-        issuer_name='Zure Aplikazioa'
-    )
-    
-    # Sortu QR kodea
-    qr = qrcode.make(totp_uri)
-    qr.save(f'mfa_{erabiltzaile_izena}.png')
-    
-    return gakoa
-
-def egiaztatuKodea(gakoa, erabiltzailearen_kodea):
-    totp = pyotp.TOTP(gakoa)
-    return totp.verify(erabiltzailearen_kodea)
-
-# Erabilera adibidea
-erabiltzaile_izena = "pertsona@adibidea.eus"
-gakoa = konfiguratuMFA(erabiltzaile_izena)
-print(f"Eskaneatu QR kodea Google Authenticatorrekin: mfa_{erabiltzaile_izena}.png")
-
-# Erabiltzaileak kodea sartu duela simulatu
-erabiltzailearen_kodea = input("Sartu zure autentifikazio aplikazioko kodea: ")
-if egiaztatuKodea(gakoa, erabiltzailearen_kodea):
-    print("Autentifikazioa arrakastatsua!")
-else:
-    print("Kode okerra, saiatu berriro.")
+```php
+    $cookieParams = [
+        'lifetime' => 60*60*24, // 1 egun (egokitu behar dena)
+        'path'     => '/',
+        'domain'   => '.zure-domeinua.eus',
+        'secure'   => true,      // HTTPS behar du
+        'httponly' => true,      // JSk ezin du irakurri
+        'samesite' => 'Lax'      // edo 'Strict' behar izanez gero
+    ];
+    session_set_cookie_params($cookieParams);
+    session_start();
 ```
 
-## Saioen segurtasunerako aholkuak
+### Saioa itxi (logout) modu seguruan
 
-1. **Saio-identifikatzaile luze eta ausazkoak** erabili
-2. **Saioak iraungitzeko** denbora-tarte egokiak ezarri
-3. **Saio bakarra** baimendu erabiltzaileko
-4. **Saioa ixteko** aukera ezarri
-5. **Erabiltzailearen ohiko kokapena** eta **nabigatzailea** monitorizatu
-6. **Saio aktiboak erakuts**i erabiltzaileari
+```php
+    // logout.php
+    session_start();
+    $_SESSION = [];
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params['path'], $params['domain'],
+            $params['secure'], $params['httponly']
+        );
+    }
+    session_destroy();
+```
 
-## Hurrengo urratsak
+### CSRF babesa (PHP) — oinarrizko tokena
 
-- [Sarbide-kontrola eta konfigurazio segurua](sarbide_kontrola.md)
-- [Atzera itzuli aurreko atalera](injekzioak.md)
+Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian.
+
+```php
+    // PHP saioaren barruan, token bat sortu eta saioan gorde:
+
+    // session_start() beti lehenengo lerroan!
+    session_start();
+
+    function csrf_token() {
+        if (empty($_SESSION['csrf_token'])) {
+            // 32 byte ausazko token sortu, hex-formatuan
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return $_SESSION['csrf_token'];
+    }
+
+
+
+    // Formulari bakoitzean sartu token hau hidden input batekin:
+
+    <form action="submit.php" method="post">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token()); ?>">
+        
+        <label for="name">Izena:</label>
+        <input type="text" name="name" id="name">
+        
+        <button type="submit">Bidali</button>
+    </form>
+
+
+
+    // Zerbitzarian tokena egiaztatu. submit.php fitxategian, eskaera jasotzean:
+
+    session_start();
+
+    // POSTeko tokena egiaztatu
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        http_response_code(400);
+        exit('CSRF token okerra edo falta da.');
+    }
+
+    // Tokena zuzena bada, jarraitu datuak prozesatzen
+    $name = $_POST['name'];
+    echo "Formularioa ondo bidali da: $name";
+```

@@ -1,168 +1,316 @@
-# 2.1 Injekzioen aurkako defentsak
+# 3.1 Injekzioen aurkako defentsak
 
-## SQL injekzioa
+## Backend-erako defentsak
 
-### Zer da SQL injekzioa?
-SQL injekzioa datu-basearen kontsulta bat aldatzen duen eraso mota bat da, erabiltzailearen sarrera egoki balioztatu gabe kontsultan txertatzen denean gertatzen dena.
 
-### Nola funtzionatzen du?
-```sql
--- Erabiltzailearen sarrera: ' OR '1'='1
--- Kontsulta originala:
-SELECT * FROM users WHERE username = '' AND password = 'hasia'
 
--- Injekzioaren ondoren:
-SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
--- '1'='1' beti egia denez, kontsultak erabiltzaile guztiak itzuliko ditu
-```
+## Frontend-erako defentsak
 
-### Nola ekidin?
+### 1. A01:2021 - Broken Access Control (Sarbide Kontrol Apurtua)
 
-#### 1. Parametro kontsultak erabili (Prepared Statements)
+Baimendutako ez diren erabiltzaileei funtzioak edo datuak atzitzea ahalbidetzen du. Bezeroan, elementuak ezkutatzea ez da nahikoa, kodea manipulagarria baita.
 
-**Python adibidea (SQLite):**
-```python
-import sqlite3
+#### Ezegonkorra: 
+Botoi bat ezkutatzea nahikoa dela pentsatzea.
 
-def login_segurua(erabiltzailea, pasahitza):
-    conn = sqlite3.connect('datu_basea.db')
-    cursor = conn.cursor()
-    
-    # Parametro kontsulta erabiliz
-    kontsulta = "SELECT * FROM users WHERE username = ? AND password = ?"
-    cursor.execute(kontsulta, (erabiltzailea, pasahitza))
-    
-    erabiltzailea = cursor.fetchone()
-    conn.close()
-    return erabiltzailea
-```
-
-**PHP adibidea (PDO):**
-```php
-<?php
-$erabiltzailea = $_POST['erabiltzailea'];
-$pasahitza = $_POST['pasahitza'];
-
-$pdo = new PDO('mysql:host=localhost;dbname=nire_db', 'erabiltzailea', 'pasahitza');
-$stmt = $pdo->prepare('SELECT * FROM users WHERE username = :erabiltzailea AND password = :pasahitza');
-$stmt->execute(['erabiltzailea' => $erabiltzailea, 'pasahitza' => $pasahitza]);
-$erabiltzailea = $stmt->fetch();
-?>
-```
-
-## XSS (Cross-Site Scripting)
-
-### XSS motak
-
-1. **Ispatutako XSS (Reflected)**
-   - Erasotzaileak biktimari URL maltzur bat bidaltzen dio
-   - Webguneak erantzunean script-a islatzen du
-   - Script-a biktimaren nabigatzailean exekutatzen da
-
-2. **Gordetako XSS (Stored)**
-   - Script maltzurra datu-basean gordetzen da
-   - Erabiltzaileak orria kargatzen duenean exekutatzen da
-   - Kalte handiagoak eragin ditzake
-
-3. **DOM XSS**
-   - Nabigatzailean gertatzen da soilik
-   - Dokumentuaren objektu-eredua (DOM) aldatzen du
-
-### Nola ekidin XSS-a?
-
-#### 1. Irteera kodifikatu
-
-**JavaScript (Node.js):**
 ```javascript
-const escapeHtml = (text) => {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    "/": '&#x2F;'
-  };
-  return text.replace(/[&<>"'/]/g, m => map[m]);
-};
-
-// Erabilera
-const sarreraArriskutsua = "<script>kodea</script>";
-document.getElementById('izena').innerHTML = escapeHtml(sarreraArriskutsua);
+if (!user.isAdmin) {
+  document.getElementById("deleteBtn").style.display = "none";
+}
 ```
 
-#### 2. Erabili seguruak diren API-ak
+#### Segurua: 
+Backend-ek beti balidatu behar du baimena.
 
-**JavaScript segurua:**
 ```javascript
-// Txarra
-document.getElementById('izena').innerHTML = erabiltzailearenSarrera;
-
-// Hobea
-document.getElementById('izena').textContent = erabiltzailearenSarrera;
+if (!user.isAdmin) {
+  document.getElementById("deleteBtn").remove();
+}
 ```
 
-#### 3. Content Security Policy (CSP) erabili
+#### Aholkuak:
+- Ez fidatu bezero aldeko balioztapenetan; egiaztatu backend-ean tokenak erabiliz (adib., JWT).
+- Erabili gutxieneko pribilegioaren printzipioa.
+- Inplementatu RBAC (Roleen Bidezko Sarbide Kontrola) zerbitzarian.
 
-```http
-Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com
+---
+
+### 2. A02:2021 - Cryptographic Failures (Kriptografia Hutsegiteak)
+
+Datu sentikorren esposizioa kriptografia ahularen bidez. JS-n, saihestu secretak bezeroan gordetzea edo HTTPS gabe transmititzea.
+
+#### Ezegonkorra: 
+Pasahitzak edo tokenak `localStorage`-n gordetzea.
+
+```javascript
+localStorage.setItem("password", "123456");
 ```
 
-## Beste injekzio batzuk
+#### Segurua: 
+Inoiz ez gorde pasahitzak. Token aldi baterako hobeak `sessionStorage`-n.
 
-### Komando-injekzioa
-
-**Adibide arriskutsua (Python):**
-```python
-import os
-
-def ping_helbidea(helbidea):
-    # Arriskutsua: erabiltzailearen sarrerak komandoak exekuta ditzake
-    os.system(f"ping -c 4 {helbidea}")
+```javascript
+sessionStorage.setItem("password", 123456);
 ```
 
-**Segurua:**
-```python
-import subprocess
+Beste modu bat...
 
-def ping_helbidea_segurua(helbidea):
-    # Segurua: parametro modura bidaltzen da
-    subprocess.run(['ping', '-c', '4', helbidea], check=True)
+```javascript
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hash)).map(b =>
+    b.toString(16).padStart(2, '0')).join('');
+}
 ```
 
-### LDAP injekzioa
+#### Aholkuak:
+- Erabili HTTPS beti.
+- Gorde tokenak HttpOnly cookie-etan, ez localStorage-n.
+- Erabili Web Crypto API behar kriptografikoentzat.
 
-**Adibide arriskutsua:**
-```python
-import ldap
+---
 
-def autentifikatu(erabiltzailea, pasahitza):
-    # Arriskutsua: sarrera garbitu gabe
-    kontsulta = f"(uid={erabiltzailea})(userPassword={pasahitza})"
-    # LDAP kontsulta egin
+### 3. A03:2021 - Injection (XSS, HTML Injection) (Injekzioa)
+
+Kode gaiztoko injekzioa, hala nola XSS, sanitizatu gabeko input-en bidez.
+
+#### Ezegonkorra: 
+Input-ak zuzenean innerHTML-n sartzea.
+
+```javascript
+const userInput = document.getElementById('input').value;
+document.getElementById('output').innerHTML = userInput;
 ```
 
-**Segurua:**
-```python
-import ldap
-from ldap.filter import escape_filter_chars
+#### Segurua: 
+Sanitizatu edukia DOMPurify erabiliz.
 
-def autentifikatu_segurua(erabiltzailea, pasahitza):
-    # Karaktere bereziak iragazita
-    erab_garbitua = escape_filter_chars(erabiltzailea)
-    pass_garbitua = escape_filter_chars(pasahitza)
-    kontsulta = f"(uid={erab_garbitua})(userPassword={pass_garbitua})"
-    # LDAP kontsulta egin
+```javascript
+import DOMPurify from 'dompurify';
+const userInput = document.getElementById('input').value;
+const sanitized = DOMPurify.sanitize(userInput);
+document.getElementById('output').textContent = sanitized;
 ```
 
-## Ariketa praktikoa
+#### Aholkuak:
+- Erabili textContent edo createTextNode innerHTML-ren ordez.
+- Sanitizatu DOMPurify erabiliz.
+- Inplementatu Content Security Policy (CSP).
 
-1. Sortu web orri sinple bat erabiltzaile-izen eta pasahitzarekin
-2. Inplementatu SQL injekzioaren aurkako babesa
-3. Gehitu XSS babesa sarrera eta irteeran
-4. Probatu zure babesak sarrera arriskutsuekin
+---
 
-## Hurrengo urratsak
+### 4. A04:2021 - Insecure Design (Diseinu Ezegonkorra)
 
-- [Autentifikazio eta saioen segurtasuna](autentifikazioa.md)
-- [Atzera itzuli aurreko atalera](../oinarriak_mehatxuak/owasp_top10.md)
+Hasieratik mehatxuak kontuan hartzen ez dituzten diseinuak.
+
+#### Ezegonkorra: 
+Logika kritikoa frontend-ean.
+
+```javascript
+let precio = 100;
+if (userInput === "BLACKFRIDAY") {
+  precio = 1;
+}
+```
+
+#### Segurua: 
+Kalkulua beti backend-ean.
+
+```javascript
+fetch("/api/check-discount", {
+  method: "POST",
+  body: JSON.stringify({ coupon: userInput })
+})
+```
+
+#### Aholkuak:
+- Erabili threat modeling (adib., STRIDE).
+- Balidatu input-ak Zod bezalako liburutegiekin.
+- Diseinatu "secure by default" printzipioarekin.
+
+---
+
+### 5. A05:2021 - Security Misconfiguration (Segurtasun Konfigurazio Okerra)
+
+Konfigurazio ezegunekorrak.
+
+#### Ezegonkorra: 
+Liburutegi zaharrak erabiltzea edo barne erroreak erakustea.
+
+```javascript
+console.error("Error: conexión a base de datos fallida en localhost:3306");
+```
+
+#### Segurua: 
+Liburutegi eguneratuak eta mezu generikoak erabiltzea.
+
+```javascript
+console.error("Ha ocurrido un error, inténtelo más tarde.");
+```
+
+Beste adibide bat:
+
+#### Ezegonkorra:
+
+```javascript
+fetch('https://api.example.com/data');
+```
+
+#### Segurua:
+
+```javascript
+fetch('https://api.example.com/data', {
+  mode: 'cors',
+  credentials: 'same-origin',
+  headers: {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Requested-With': 'XMLHttpRequest'
+  }
+});
+```
+
+#### Aholkuak:
+- Konfiguratu CORS zorrotz backend-ean.
+- Erabili segurtasun goiburuak.
+- Eskaneatu konfigurazioak OWASP ZAP erabiliz.
+
+---
+
+### 6. A06:2021 - Vulnerable and Outdated Components (Osagai Zaurgarri eta Zaharkituak)
+
+Ahultasunak dituzten liburutegi zaharkituen erabilera.
+
+#### Ezegonkorra:
+
+```javascript
+import _ from 'lodash'; // Versión <4.17.13 vulnerable
+_.merge({}, JSON.parse(userInput));
+```
+
+#### Segurua:
+
+```javascript
+import _ from 'lodash'; // "^4.17.21"
+_.merge({}, JSON.parse(userInput));
+```
+
+#### Aholkuak:
+- Erabili npm audit edo Snyk.
+- Eguneratu dependentziak erregulartasunez.
+- Minimizatu dependentziak.
+
+---
+
+### 7. A07:2021 - Identification and Authentication Failures (Identifikazio eta Autentifikazio Hutsegiteak)
+
+Autentifikazioaren kudeaketa txarra, tokenak esposatzen dituen modukoa.
+
+#### Ezegonkorra: 
+Saio mugagabea gordetzea.
+
+```javascript
+localStorage.setItem("jwt", token);
+```
+
+#### Segurua: 
+Iraungipen kontrolatua erabiltzea.
+
+```javascript
+setTimeout(() => {
+  sessionStorage.removeItem("accessToken");
+  alert("Tu sesión ha expirado");
+  location.href = "/login";
+}, 15 * 60 * 1000); // 15 minutos
+```
+
+#### Aholkuak:
+- Erabili OAuth/JWT iraungitzerekin.
+- Inplementatu MFA backend-arekin.
+- Ezabatu tokenak logout egitean.
+
+---
+
+### 8. A08:2021 - Software and Data Integrity Failures (Software eta Datu Integritate Hutsegiteak)
+
+Script-en karga egiaztapen gabe (adib., SRI gabe).
+
+#### Ezegonkorra: 
+Script-ak balidazio gabe kargatzea.
+
+```html
+<script src="https://cdn.example.com/lib.js"></script>
+```
+
+#### Segurua: 
+Subresource Integrity (SRI) erabiltzea.
+
+```html
+<script src="https://cdn.example.com/lib.js"
+        integrity="sha384-xxxxx"
+        crossorigin="anonymous"></script>
+```
+
+#### Aholkuak:
+- Erabili Subresource Integrity (SRI).
+- Egiaztatu checksumak.
+- Saihestu CDN ez-fidagarriak.
+
+---
+
+### 9. A09:2021 - Security Logging and Monitoring Failures (Segurtasun Log eta Monitorizazio Hutsegiteak)
+
+Datuak esposatzen dituzten logak edo erasoak detektatu ezin dituztenak.
+
+#### Ezegonkorra:
+
+```javascript
+console.log('Error with user:', userData);
+```
+
+#### Segurua:
+
+```javascript
+console.error('Error occurred:', { code: error.code });
+```
+
+#### Aholkuak:
+- Ez egin PII (Personally Identifiable Information) loggingik.
+- Erabili Sentry bezalako tresnak.
+- Mugatu logak produkzioan.
+
+---
+
+### 10. A10:2021 - Server-Side Request Forgery (SSRF) (Zerbitzari Aldeko Eskaera Faltsutzea)
+
+Barne baliabideetara request-ak egitera behartzen dituzten bezero eskaerak.
+
+#### Ezegonkorra:
+
+```javascript
+const url = document.getElementById('urlInput').value;
+fetch(url);
+```
+
+#### Segurua:
+
+```javascript
+const allowedUrls = ['https://api.example.com'];
+const url = document.getElementById('urlInput').value;
+if (allowedUrls.some(allowed => url.startsWith(allowed))) {
+  fetch(url);
+}
+```
+
+#### Aholkuak:
+- Erabili allowlist-ak URLentzat.
+- Balidatu input-ak eskareentzat.
+- Mugatu GET metodoetara ahal bada.
+
+
+
+
+# Hurrengo urratsak
+
+- [SQL injekzioak prebenitzeko trikimailu-orria](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
