@@ -1,18 +1,24 @@
 # Identification and Authentication Failures
 
-## Introducción
-Las fallas en la identificación y autenticación ocurren cuando las funciones relacionadas con la identidad de los usuarios se implementan incorrectamente. Esta categoría ocupa el séptimo puesto en el OWASP Top 10 2021.
+Erabiltzaile-identifikazio eta autentifikazioaren porrotak gertatzen dira hauek ez direlako behar bezala inplementatzen (pasahitz politika ahulak, sesioen kudeaketa txarra, MFA falta...). Hauek erabiltzaile suplantazioa, saio gehiegikeriak edo baimen-gorakadak ekar ditzakete.
 
-## Objetivos del Ejercicio
-- Identificar debilidades en la autenticación
-- Aprender sobre autenticación de múltiples factores
-- Implementar controles de autenticación seguros
+### Adibideak:
 
-## Tareas
-1. Probar la fortaleza de las contraseñas
-2. Verificar la gestión de sesiones
-3. Evaluar la recuperación de cuentas
+Autentifikazio-eraso gehienak pasahitzak faktore bakar gisa erabiltzeagatik gertatzen dira. Pasahitzen errotazioa eta konplexutasuna eskatzen duten jardunbide egokienak erabiltzaileen pasahitz ahulak erabiltzea eta biltzea sustatzen duten jardueratzat hartzen dira.
 
-## Recursos
-- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-- [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
+
+### Prebentsioa
+Ahal denean, inplika ezazu faktore anitzeko autentifikazioa, kredentzial ezagunak berrerabiltzeko eraso automatizatuak, indar gordina eta lapurtutako kredentzialen bilketa saihesteko.
+
+Ez sartu edo inplika zure softwarean kredentzial lehenetsiak, batez ere erabiltzaile administratzaileentzat.
+
+Pasahitz ahulen aurkako kontrola ezarri.
+
+## Erronkak
+
+
+
+## Estekak
+- [OWASP Identification and Authentication Failures](https://owasp.org/Top10/es/A07_2021-Identification_and_Authentication_Failures/)
+
+

@@ -1,18 +1,29 @@
 # Server-Side Request Forgery (SSRF)
 
-## Introducción
-La falsificación de solicitudes del lado del servidor (SSRF) ocurre cuando un atacante puede hacer que el servidor realice solicitudes a recursos internos o externos. Esta categoría es nueva en el OWASP Top 10 2021, ocupando el décimo puesto.
+SSRF erasoetan, erasotzaileak zerbitzari bati kanpoko edo barne baliabideak lerrokatzeko eskaerak egitera behartzen du. Arrisku nagusia aplikazioak barneko baliabide kritikoetara sartzea (esaterako, AWS metadata zerbitzura), soilik zerbitzarian bertan eskura daitezkeen zerbitzuetara. 
 
-## Objetivos del Ejercicio
-- Comprender los vectores de ataque SSRF
-- Aprender a identificar vulnerabilidades SSRF
-- Implementar protecciones contra SSRF
+### Adibideak:
 
-## Tareas
-1. Identificar puntos finales que realizan solicitudes
-2. Probar la validación de URLs
-3. Evaluar el filtrado de direcciones IP
 
-## Recursos
-- [OWASP SSRF](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
-- [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
+
+### Prebentsioa
+
+Kasu honetan prebentsioa izan behar du bai zerbitzarian bai aplikazio geruzan ere.
+
+Adibidez zerbitzari geruzan ondorengo pausu hauek eman beharko lirateke:
+- Sare bereizietan urruneko baliabideetara sartzeko funtzionalitatearen arabera, SSRFen inpaktua murrizteko
+
+- Firewall-politikak "lehenespen gisa ukatu" edo sarera sartzeko kontrol-arauak betearazi, intraneteko trafiko guztia blokeatzeko, funtsezkoa izan ezik.
+
+Eta aplikazio geruzatik aldiz beste hauek beste gauza askoren gain:
+- Konpondu eta baliozkotu bezeroak emandako sarrera-datu guztiak
+- Bete URL eskema, ataka eta helburua, onartutako item-zerrenda positibo baten bidez
+
+## Erronkak
+
+
+
+## Estekak
+- [OWASP Server-Side Request Forgery (SSRF)](https://owasp.org/Top10/es/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/)
+
+

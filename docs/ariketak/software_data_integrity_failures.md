@@ -1,18 +1,20 @@
 # Software and Data Integrity Failures
 
-## Introducción
-Las fallas de integridad del software y los datos ocurren cuando la integridad del código y la infraestructura no se verifican adecuadamente. Esta es una nueva categoría en el OWASP Top 10 2021, ocupando el octavo puesto.
+Zibersegurtasun mehatxu hau gertatzen da aplikazioek ez dutenean egiaztatzen softwarearen edo datuen integritatea, adibidez, kanpoko osagaiak, eguneraketak edo konfigurazio kritikoak. Hau baliatuz, erasotzaileek kode gaiztoa txerta dezakete (supply chain attack).  
 
-## Objetivos del Ejercicio
-- Comprender los riesgos de integridad
-- Aprender sobre firmas digitales
-- Implementar verificaciones de integridad
+### Adibideak:
 
-## Tareas
-1. Verificar firmas de código
-2. Evaluar la cadena de suministro
-3. Revisar actualizaciones automáticas
+Oso ezaguna da [SolarWinds-en kasua](https://www.zscaler.com/es/resources/security-terms-glossary/what-is-the-solarwinds-cyberattack), zeinak milaka bezero kaltetu zituen era honetan.
 
-## Recursos
-- [OWASP Software and Data Integrity Failures](https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/)
-- [OWASP Dependency Track](https://owasp.org/www-project-dependency-track/)
+### Prebentsioa
+
+Arriskua murrizteko: sinadura digitalak, jatorri fidagarriak eta CI/CD pipeline-en segurtasun gutxieneko neurriak aplikatu behar dira
+
+## Erronkak
+
+
+
+## Estekak
+- [OWASP Software and Data Integrity Failures](https://owasp.org/Top10/es/A08_2021-Software_and_Data_Integrity_Failures/)
+
+
