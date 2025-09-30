@@ -7,17 +7,30 @@ Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek seg
 ### [1. Oinarriak eta mehatxu arruntak](oinarriak_mehatxuak/sarrera/)
 - [Web Garapenean Zibersegurtasunaren Sarrera](oinarriak_mehatxuak/sarrera/)
 - [Webaren funtzionamenduaren oinarriak](oinarriak_mehatxuak/web_oinarriak/)
-- [Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)](oinarriak_mehatxuak/owasp_top10/)
+- [Web Hacking-erako sarrera](oinarriak_mehatxuak/web_hacking_sarrera/)
 
-### [2. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak/)
+### [2. OWASP Top 10](oinarriak_mehatxuak/owasp_top10/)
+- [Aurkezpena (OWASP Top 10)](oinarriak_mehatxuak/owasp_top10/)
+- [Broken Access Control](ariketak/broken_access_control/)
+- [Cryptographic Failures](ariketak/cryptographic_failures/)
+- [Injection](ariketak/injection/)
+- [Insecure Design](ariketak/insecure_design/)
+- [Security Misconfiguration](ariketak/security_misconfiguration/)
+- [Vulnerable and Outdated Components](ariketak/vulnerable_components/)
+- [Identification and Authentication Failures](ariketak/authentication_failures/)
+- [Software and Data Integrity Failures](ariketak/integrity_failures/)
+- [Security Logging and Monitoring Failures](ariketak/logging_failures/)
+- [Server-Side Request Forgery](ariketak/ssrf/)
+
+### [3. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak/)
 - [Injekzioen aurkako defentsak](eraso_defentsak/injekzioak/)
 - [Autentifikazio eta saioen segurtasuna](eraso_defentsak/autentifikazioa/)
 - [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola/)
 
-### [3. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
+<!-- ### [4. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
 - [Datu sentikorren babesa](datu_babesa/datu_sentikorrak/)
 - [APIen eta dependentzien segurtasuna](datu_babesa/api_segurtasuna/)
-- [Tresna praktikoen sarrera](datu_babesa/tresnak/)
+- [Tresna praktikoen sarrera](datu_babesa/tresnak/) -->
 
 ## Nola erabili apunte hauek
 
