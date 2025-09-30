@@ -42,16 +42,27 @@ nav:
   - '1. Oinarriak eta mehatxu arruntak':
     - '1.1. Web Garapenean Zibersegurtasunaren Sarrera': oinarriak_mehatxuak/sarrera.md
     - '1.2. Webaren funtzionamenduaren oinarriak': oinarriak_mehatxuak/web_oinarriak.md
-    - '1.3. Web Hacking-erako sarrera': oinarriak_mehatxuak/web_hacking_sarrera.md
-    - '1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)': oinarriak_mehatxuak/owasp_top10.md
-  - '2. Eraso eta defentsa oinarrizkoak':
-    - '2.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
-    - '2.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
-    - '2.3. Sarbide-kontrola eta konfigurazio segurua': eraso_defentsak/sarbide_kontrola.md
-  - '3. Datuen babesa eta tresna praktikoak':
-    - '3.1. Datu sentikorren babesa': datu_babesa/datu_sentikorrak.md
-    - '3.2. APIen eta dependentzien segurtasuna': datu_babesa/api_segurtasuna.md
-    - '3.3. Tresna praktikoen sarrera': datu_babesa/tresnak.md
+    - '1.3. Web Hacking-erako sarrera': oinarriak_mehatxuak/web_hacking_sarrera.md    
+  - '2. OWASP Top 10':
+    - 'Aurkezpena (OWASP Top 10)': oinarriak_mehatxuak/owasp_top10.md
+    - '2.1. Broken Access Control': ariketak/broken_access_control.md
+    - '2.2. Cryptographic Failures': ariketak/cryptographic_failures.md
+    - '2.3. Injection': ariketak/injection.md
+    - '2.4. Insecure Design': ariketak/insecure_design.md
+    - '2.5. Security Misconfiguration': ariketak/security_misconfiguration.md
+    - '2.6. Vulnerable and Outdated Components': ariketak/vulnerable_components.md
+    - '2.7. Identification and Authentication Failures': ariketak/authentication_failures.md
+    - '2.8. Software and Data Integrity Failures': ariketak/integrity_failures.md
+    - '2.9. Security Logging and Monitoring Failures': ariketak/logging_failures.md
+    - '2.10. Server-Side Request Forgery': ariketak/ssrf.md
+  - '3. Eraso eta defentsa oinarrizkoak':
+    - '3.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
+    - '3.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
+    - '3.3. Sarbide-kontrola eta konfigurazio segurua': eraso_defentsak/sarbide_kontrola.md
+  # - '4. Datuen babesa eta tresna praktikoak':
+  #   - '4.1. Datu sentikorren babesa': datu_babesa/datu_sentikorrak.md
+  #   - '4.2. APIen eta dependentzien segurtasuna': datu_babesa/api_segurtasuna.md
+  #   - '4.3. Tresna praktikoen sarrera': datu_babesa/tresnak.md
 
 markdown_extensions:
   - admonition

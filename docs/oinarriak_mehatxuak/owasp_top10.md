@@ -25,9 +25,7 @@ Erabiltzaileek soilik baimendutako ekintzak bakarrik egin ditzaten mugatzea huts
 - "Baimenik ez" jarrerarekin hasi
 - Erabiltzaile-zerbitzari aldean sarbidea egiaztatu
 
-### Erronkak
-
-- [Broken Access Control](../ariketak/broken_access_control.md)
+- [Informazio gehiago >> Broken Access Control](../ariketak/broken_access_control.md)
 
 ## 2. Zifraketa-akatsak (Cryptographic Failures)
 
@@ -45,9 +43,7 @@ Datuak zifratzeko erabiltzen diren ahultasunak edo akatsak.
 - HTTPS erabili beti
 - Gakoak modu seguruan gorde
 
-### Erronkak
-
-- [Cryptographic Failures](../ariketak/cryptographic_failures.md)
+- [Informazio gehiago >> Cryptographic Failures](../ariketak/cryptographic_failures.md)
 
 ## 3. Injekzioa (Injection)
 
@@ -113,9 +109,7 @@ LDAP Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa e
 - Sarrera guztiak balioztatu eta garbitu
 - Pribilegio minimoen printzipioa aplikatu
 
-### Erronkak
-
-- [Injection](../ariketak/injection.md)
+- [Informazio gehiago >> Injection](../ariketak/injection.md)
 
 ## 4. Diseinu ez segurua (Insecure Design)
 
@@ -133,9 +127,7 @@ Segurtasun-arazoak diseinu-fasean sortzen direnean, eta ez bakarrik inplementazi
 - Mehatxuen ereduak egin
 - Abusu-kasuak identifikatu eta prebenitu
 
-### Erronkak
-
-- [Insecure Design](../ariketak/insecure_design.md)
+- [Informazio gehiago >> Insecure Design](../ariketak/insecure_design.md)
 
 ## 5. Konfigurazio oker eta ahula (Security Misconfiguration)
 
@@ -153,9 +145,7 @@ Segurtasun-konfigurazio egokirik ez izatea edo konfigurazio okerrak izatea.
 - Automatizatu konfigurazioa
 - Eguneratu eta berrikusi konfigurazioa maiz
 
-### Erronkak
-
-- [Security Misconfiguration](../ariketak/security_misconfiguration.md)
+- [Informazio gehiago >> Security Misconfiguration](../ariketak/security_misconfiguration.md)
 
 ## 6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)
 
@@ -173,9 +163,7 @@ Hirugarreneko liburutegi eta osagaietan dauden ahultasunak.
 - Ez erabili osagai zaharkiturik
 - Eskaneatu osagaiak ahultasunen bila
 
-### Erronkak
-
-- [Vulnerable and Outdated Components](../ariketak/vulnerable_and_outdated_components.md)
+- [Informazio gehiago >> Vulnerable and Outdated Components](../ariketak/vulnerable_and_outdated_components.md)
 
 ## 7. Autentifikazio-akatsak (Identification and Authentication Failures)
 
@@ -193,9 +181,7 @@ Erabiltzaileak identifikatu eta autentifikatzeko arazoak.
 - Erabili pasahitz-politika sendoak
 - Egiaztatu saio-identifikatzaileak
 
-### Erronkak
-
-- [Identification and Authentication Failures](../ariketak/identification_and_authentication_failures.md)
+- [Informazio gehiago >> Identification and Authentication Failures](../ariketak/identification_and_authentication_failures.md)
 
 ## 8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)
 
@@ -213,9 +199,7 @@ Datuen osotasuna eta jatorriaren ziurtasuna arriskuan jartzen direnean.
 - Egiaztatu kode eta datuen jatorria
 - Inplementatu osotasunaren egiaztapena
 
-### Erronkak
-
-- [Software and Data Integrity Failures](../ariketak/software_and_data_integrity_failures.md)
+- [Informazio gehiago >> Software and Data Integrity Failures](../ariketak/software_and_data_integrity_failures.md)
 
 ## 9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)
 
@@ -233,9 +217,7 @@ Erasoak detektatu eta erantzuteko gaitasun falta.
 - Konfiguretu alerta automatikoak
 - Planifikatu erantzun-prozedurak
 
-### Erronkak
-
-- [Security Logging and Monitoring Failures](../ariketak/security_logging_and_monitoring_failures.md)
+- [Informazio gehiago >> Security Logging and Monitoring Failures](../ariketak/security_logging_and_monitoring_failures.md)
 
 ## 10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)
 
@@ -253,9 +235,7 @@ Erasotzaileak zerbitzariak barne-sarean egindako eskaerak kontrolatzen dituenean
 - Erabili zerrenda zuri bat onartutako helbideentzako
 - Ezarri konexio-mugen eta denbora-mugen politika
 
-### Erronkak
-
-- [Server-Side Request Forgery](../ariketak/server_side_request_forgery.md)
+- [Informazio gehiago >> Server-Side Request Forgery](../ariketak/server_side_request_forgery.md)
 
 ## Hurrengo urratsak
 
