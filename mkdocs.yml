@@ -50,11 +50,11 @@ nav:
     - '2.3. Injection': ariketak/injection.md
     - '2.4. Insecure Design': ariketak/insecure_design.md
     - '2.5. Security Misconfiguration': ariketak/security_misconfiguration.md
-    - '2.6. Vulnerable and Outdated Components': ariketak/vulnerable_components.md
-    - '2.7. Identification and Authentication Failures': ariketak/authentication_failures.md
-    - '2.8. Software and Data Integrity Failures': ariketak/integrity_failures.md
-    - '2.9. Security Logging and Monitoring Failures': ariketak/logging_failures.md
-    - '2.10. Server-Side Request Forgery': ariketak/ssrf.md
+    - '2.6. Vulnerable and Outdated Components': ariketak/vulnerable_obsolete_components.md
+    - '2.7. Identification and Authentication Failures': ariketak/identification_authentication_failures.md
+    - '2.8. Software and Data Integrity Failures': ariketak/software_data_integrity_failures.md
+    - '2.9. Security Logging and Monitoring Failures': ariketak/security_logging_monitoring_failures.md
+    - '2.10. Server-Side Request Forgery': ariketak/server_side_request_forgery.md
   - '3. Eraso eta defentsa oinarrizkoak':
     - '3.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
     - '3.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
