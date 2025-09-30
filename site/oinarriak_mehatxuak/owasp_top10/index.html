@@ -1,0 +1,1924 @@
+
+<!doctype html>
+<html lang="eu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../web_hacking_sarrera/">
+      
+      
+        <link rel="next" href="../../eraso_defentsak/injekzioak/">
+      
+      
+      <link rel="icon" href="http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10) - Zibersegurtasuna Web Garapenean - 2025-2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13-web-ahultasun-arrunten-ikuspegi-orokorra-owasp-top-10" class="md-skip">
+          Joan zuzenean edukira
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Atalburua">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-header__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Zibersegurtasuna Web Garapenean - 2025-2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-label="Modu iluna"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modu iluna" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Bilatu" placeholder="Bilatu" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Bilatu">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Garbitu" aria-label="Garbitu" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Bilaketa hasieratzen
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Nabigazioa" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-nav__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    Zibersegurtasuna Web Garapenean - 2025-2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hasiera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    1. Oinarriak eta mehatxu arruntak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Oinarriak eta mehatxu arruntak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1. Web Garapenean Zibersegurtasunaren Sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_oinarriak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2. Webaren funtzionamenduaren oinarriak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_hacking_sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Web Hacking-erako sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Edukiak
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zer-da-owasp-top-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zer da OWASP Top 10?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sarbide-kontrol-hauskorrak-broken-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sarbide-kontrol hauskorrak (Broken Access Control)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Sarbide-kontrol hauskorrak (Broken Access Control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-zifraketa-akatsak-cryptographic-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Zifraketa-akatsak (Cryptographic Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Zifraketa-akatsak (Cryptographic Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-injekzioa-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Injekzioa (Injection)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Injekzioa (Injection)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-diseinu-ez-segurua-insecure-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Diseinu ez segurua (Insecure Design)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Diseinu ez segurua (Insecure Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-konfigurazio-oker-eta-ahula-security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Konfigurazio oker eta ahula (Security Misconfiguration)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Konfigurazio oker eta ahula (Security Misconfiguration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-konponente-bulnerable-eta-zaharkituak-vulnerable-and-outdated-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-autentifikazio-akatsak-identification-and-authentication-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Autentifikazio-akatsak (Identification and Authentication Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Autentifikazio-akatsak (Identification and Authentication Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-datuak-eta-datuen-osotasunaren-galera-software-and-data-integrity-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-segurtasunaren-monitorizazio-falta-security-logging-and-monitoring-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-zerbitzariaren-aldeko-eskaera-faltsuketa-server-side-request-forgery-ssrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurrengo urratsak
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    2. Eraso eta defentsa oinarrizkoak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Eraso eta defentsa oinarrizkoak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/injekzioak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. Injekzioen aurkako defentsak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/autentifikazioa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. Autentifikazio eta saioen segurtasuna
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/sarbide_kontrola/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3. Sarbide-kontrola eta konfigurazio segurua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    3. Datuen babesa eta tresna praktikoak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Datuen babesa eta tresna praktikoak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/datu_sentikorrak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.1. Datu sentikorren babesa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/api_segurtasuna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.2. APIen eta dependentzien segurtasuna
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/tresnak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.3. Tresna praktikoen sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Edukiak
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#zer-da-owasp-top-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zer da OWASP Top 10?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sarbide-kontrol-hauskorrak-broken-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sarbide-kontrol hauskorrak (Broken Access Control)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Sarbide-kontrol hauskorrak (Broken Access Control)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-zifraketa-akatsak-cryptographic-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Zifraketa-akatsak (Cryptographic Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Zifraketa-akatsak (Cryptographic Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-injekzioa-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Injekzioa (Injection)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Injekzioa (Injection)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-diseinu-ez-segurua-insecure-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Diseinu ez segurua (Insecure Design)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Diseinu ez segurua (Insecure Design)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-konfigurazio-oker-eta-ahula-security-misconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Konfigurazio oker eta ahula (Security Misconfiguration)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Konfigurazio oker eta ahula (Security Misconfiguration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-konponente-bulnerable-eta-zaharkituak-vulnerable-and-outdated-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-autentifikazio-akatsak-identification-and-authentication-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Autentifikazio-akatsak (Identification and Authentication Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Autentifikazio-akatsak (Identification and Authentication Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-datuak-eta-datuen-osotasunaren-galera-software-and-data-integrity-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-segurtasunaren-monitorizazio-falta-security-logging-and-monitoring-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-zerbitzariaren-aldeko-eskaera-faltsuketa-server-side-request-forgery-ssrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adibideak_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adibideak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prebentzioa_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prebentzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erronkak_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erronkak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurrengo urratsak
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13-web-ahultasun-arrunten-ikuspegi-orokorra-owasp-top-10">1.3 Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)<a class="headerlink" href="#13-web-ahultasun-arrunten-ikuspegi-orokorra-owasp-top-10" title="Permanent link">&para;</a></h1>
+<h2 id="zer-da-owasp-top-10">Zer da OWASP Top 10?<a class="headerlink" href="#zer-da-owasp-top-10" title="Permanent link">&para;</a></h2>
+<p>OWASP (Open Web Application Security Project) erakundeak web aplikazioetako 10 arrisku kritikoen zerrenda eguneratzen du. 2021eko bertsioa da egungoa, baina uda honetan edo udazkenean berrizteko asmoa dute.</p>
+<p><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a></p>
+<p><img alt="OWASP Top 10" src="../images/owasp_top10.png" /></p>
+<blockquote>
+<p>Aurreko irudian 2017 eta 2021-ren arteko ezberdintasunak ikus daitezke.</p>
+</blockquote>
+<h2 id="1-sarbide-kontrol-hauskorrak-broken-access-control">1. Sarbide-kontrol hauskorrak (Broken Access Control)<a class="headerlink" href="#1-sarbide-kontrol-hauskorrak-broken-access-control" title="Permanent link">&para;</a></h2>
+<p>Erabiltzaileek soilik baimendutako ekintzak bakarrik egin ditzaten mugatzea huts egiten duenean gertatzen da.
+<a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank">OWASP Top 10 - Broken Access Control</a></p>
+<h3 id="adibideak">Adibideak<a class="headerlink" href="#adibideak" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Baimenik gabeko fitxategi pribatura sartzea</li>
+<li>Beste erabiltzaileen datuak editatzea</li>
+<li>Administrazio-funtzioetarako sarbidea izatea baimenik gabe</li>
+</ul>
+<h3 id="prebentzioa">Prebentzioa<a class="headerlink" href="#prebentzioa" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Sarbide-kontrola aplikatu lehentasunez</li>
+<li>"Baimenik ez" jarrerarekin hasi</li>
+<li>Erabiltzaile-zerbitzari aldean sarbidea egiaztatu</li>
+</ul>
+<h3 id="erronkak">Erronkak<a class="headerlink" href="#erronkak" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/broken_access_control/">Broken Access Control</a></li>
+</ul>
+<h2 id="2-zifraketa-akatsak-cryptographic-failures">2. Zifraketa-akatsak (Cryptographic Failures)<a class="headerlink" href="#2-zifraketa-akatsak-cryptographic-failures" title="Permanent link">&para;</a></h2>
+<p>Datuak zifratzeko erabiltzen diren ahultasunak edo akatsak.
+<a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/" target="_blank">OWASP Top 10 - Cryptographic Failures</a></p>
+<h3 id="adibideak_1">Adibideak<a class="headerlink" href="#adibideak_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Datuak zifratu gabe transmititzea</li>
+<li>Zifratze ahula erabiltzea (MD5, SHA1, DES...)</li>
+<li>Gako pribatuen kudeaketa txarra</li>
+</ul>
+<h3 id="prebentzioa_1">Prebentzioa<a class="headerlink" href="#prebentzioa_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Erabili indarrean dauden zifratze estandarrak (AES, RSA...)</li>
+<li>HTTPS erabili beti</li>
+<li>Gakoak modu seguruan gorde</li>
+</ul>
+<h3 id="erronkak_1">Erronkak<a class="headerlink" href="#erronkak_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/cryptographic_failures/">Cryptographic Failures</a></li>
+</ul>
+<h2 id="3-injekzioa-injection">3. Injekzioa (Injection)<a class="headerlink" href="#3-injekzioa-injection" title="Permanent link">&para;</a></h2>
+<p>Injekzioa gaur egungo web-aplikazioen segurtasunerako arrisku larrienetakoa da. Erasotzaileak datu maltzurrak sartzen ditu aplikazio batek interpretatzen dituen komando edo kontsulta batean. Horrela, aplikazioaren kontrola hartu, datu pertsonalak eskuratu edo datu-basea manipula dezake.
+<a href="https://owasp.org/Top10/A03_2021-Injection/" target="_blank">OWASP Top 10 - Injection</a></p>
+<h3 id="adibideak_2">Adibideak<a class="headerlink" href="#adibideak_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>SQL Injekzioa (SQL Injection)</strong>: </li>
+</ul>
+<p>Hau da injekzio-eraso ohikoena. Datu-baseetan eragiten du.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Adibidez: Erabiltzailearen sarrera: &#39; OR &#39;1&#39;=&#39;1&#39; --</span>
+
+<span class="c1">-- SQL kontsulta:</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="c1">-- AND password = &#39;...&#39;</span>
+
+<span class="c1">-- Aurreko SQL-ean geratuko dena izango da guk sartutako kodearen ondoren dagoen guztia ez dela exekutatuko.</span>
+</code></pre></div>
+
+<ul>
+<li><strong>OS Komando Injekzioa (OS Command Injection)</strong>: </li>
+</ul>
+<p>OS Komando Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.</p>
+<div class="codehilite"><pre><span></span><code>--<span class="w"> </span>Adibidez:
+ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="p">;</span><span class="w"> </span>ls<span class="w"> </span>-l
+
+--<span class="w"> </span>Imajinatu<span class="w"> </span>web-aplikazio<span class="w"> </span>batek<span class="w"> </span>formulario<span class="w"> </span>bat<span class="w"> </span>duela,<span class="w"> </span>non<span class="w"> </span>erabiltzaileak<span class="w"> </span>IP<span class="w"> </span>helbide<span class="w"> </span>bat<span class="w"> </span>sartzen<span class="w"> </span>duen.<span class="w"> </span>Aplikazioak,<span class="w"> </span>atzealdean,<span class="w"> </span>sistema<span class="w"> </span>eragilearen<span class="w"> </span>ping<span class="w"> </span>komandoa<span class="w"> </span>exekutatzen<span class="w"> </span>du,<span class="w"> </span>helbidea<span class="w"> </span>eskuragarri<span class="w"> </span>dagoen<span class="w"> </span>egiaztatzeko.
+Emandako<span class="w"> </span>adibidearekin,<span class="w"> </span>ping<span class="w"> </span>egin<span class="w"> </span>ostean,<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>exekutatzean,<span class="w"> </span>Unix<span class="w"> </span>eta<span class="w"> </span>Linux<span class="w"> </span>sistemetan,<span class="w"> </span>komando<span class="w"> </span>honek<span class="w"> </span>uneko<span class="w"> </span>direktorioko<span class="w"> </span>fitxategiak<span class="w"> </span>eta<span class="w"> </span>karpetak<span class="w"> </span>zerrendatzen<span class="w"> </span>ditu.
+</code></pre></div>
+
+<ul>
+<li><strong>LDAP Injekzioa (LDAP Injection)</strong>: </li>
+</ul>
+<p>LDAP protokoloa (Lightweight Directory Access Protocol) sareko direktorio-zerbitzuak atzitzeko eta kudeatzeko erabiltzen den protokolo estandar bat da. LDAP-en funtzio nagusia autentifikazioa eta baimenen kudeaketa zentralizatzea da.</p>
+<p>LDAP Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.</p>
+<div class="codehilite"><pre><span></span><code>--<span class="w"> </span>Adibidez:
+*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*
+
+--<span class="w"> </span>Imajinatu<span class="w"> </span>web-aplikazio<span class="w"> </span>batek<span class="w"> </span>erabiltzaileen<span class="w"> </span>autentifikazioa<span class="w"> </span>LDAP<span class="w"> </span>zerbitzari<span class="w"> </span>baten<span class="w"> </span>bidez<span class="w"> </span>egiten<span class="w"> </span>duela.<span class="w"> </span>Erabiltzaileak<span class="w"> </span>bere<span class="w"> </span>UID<span class="w"> </span><span class="o">(</span>erabiltzaile-identifikatzailea<span class="o">)</span><span class="w"> </span>eta<span class="w"> </span>pasahitza<span class="w"> </span>sartzen<span class="w"> </span>ditu,<span class="w"> </span>eta<span class="w"> </span>aplikazioak<span class="w"> </span>LDAP<span class="w"> </span>kontsulta<span class="w"> </span>bat<span class="w"> </span>eraikitzen<span class="w"> </span>du<span class="w"> </span>horrekin.
+-<span class="w"> </span>Jatorrizko<span class="w"> </span>LDAP<span class="w"> </span>kontsulta<span class="w"> </span><span class="o">(</span>normalean<span class="w"> </span>ezkutuan<span class="o">)</span>:
+<span class="o">(</span><span class="nv">uid</span><span class="o">=</span>erabiltzailearen_sarrera<span class="o">)(</span><span class="nv">userPassword</span><span class="o">=</span>pasahitza<span class="o">)</span>
+-<span class="w"> </span>Erasoa:<span class="w"> </span>Erasotzaileak<span class="w"> </span>LDAP<span class="w"> </span>sintaxiaren<span class="w"> </span>karaktere<span class="w"> </span>bereziak<span class="w"> </span><span class="o">(</span>adibidez,<span class="w"> </span>*,<span class="w"> </span><span class="o">(</span>,<span class="w"> </span><span class="p">|</span><span class="o">)</span><span class="w"> </span>erabiltzen<span class="w"> </span>ditu<span class="w"> </span>kontsultaren<span class="w"> </span>logika<span class="w"> </span>aldatzeko.<span class="w"> </span>Horrek<span class="w"> </span>SQL<span class="w"> </span>Injekzioaren<span class="w"> </span><span class="s1">&#39; OR &#39;</span><span class="m">1</span><span class="s1">&#39;=&#39;</span><span class="m">1</span><span class="err">&#39;</span><span class="w"> </span>adibidearen<span class="w"> </span>antzeko<span class="w"> </span>efektua<span class="w"> </span>sortzen<span class="w"> </span>du.
+
+*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*
+
+-<span class="w"> </span>Lortutako<span class="w"> </span>kontsulta:
+<span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">)(</span><span class="nv">userPassword</span><span class="o">=</span>pasahitza<span class="o">)</span>
+
+-<span class="w"> </span>Ondorioa:<span class="w"> </span>Kontsulta<span class="w"> </span>hau,<span class="w"> </span>LDAP-ek<span class="w"> </span>aztertuta,<span class="w"> </span>hainbat<span class="w"> </span>baldintza<span class="w"> </span>sortzen<span class="w"> </span>ditu.<span class="w"> </span>Horrek<span class="w"> </span>uid<span class="w"> </span>eta<span class="w"> </span>pasahitz-baldintza<span class="w"> </span>originala<span class="w"> </span>saihesten<span class="w"> </span>du,<span class="w"> </span>eta<span class="w"> </span>erabiltzaile<span class="w"> </span>guztien<span class="w"> </span>datuak<span class="w"> </span>itzultzen<span class="w"> </span>ditu<span class="w"> </span>edo<span class="w"> </span>autentifikazioa<span class="w"> </span>gainditzen<span class="w"> </span>du.<span class="w"> </span>Erasotzaileak<span class="w"> </span>lortzen<span class="w"> </span>du<span class="w"> </span>LDAP<span class="w"> </span>zerbitzarian<span class="w"> </span>saioa<span class="w"> </span>hastea,<span class="w"> </span>pasahitza<span class="w"> </span>jakin<span class="w"> </span>gabe,<span class="w"> </span>edo<span class="w"> </span>erabiltzaile-informazio<span class="w"> </span>sentikorra<span class="w"> </span>lortzea.
+</code></pre></div>
+
+<h3 id="prebentzioa_2">Prebentzioa<a class="headerlink" href="#prebentzioa_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Parametro kontsultak erabili (prepared statements)</li>
+<li>ORM seguruak erabiliz, SQL kontsulta zuzenak saihestu</li>
+<li>Sarrera guztiak balioztatu eta garbitu</li>
+<li>Pribilegio minimoen printzipioa aplikatu</li>
+</ul>
+<h3 id="erronkak_2">Erronkak<a class="headerlink" href="#erronkak_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/injection/">Injection</a></li>
+</ul>
+<h2 id="4-diseinu-ez-segurua-insecure-design">4. Diseinu ez segurua (Insecure Design)<a class="headerlink" href="#4-diseinu-ez-segurua-insecure-design" title="Permanent link">&para;</a></h2>
+<p>Segurtasun-arazoak diseinu-fasean sortzen direnean, eta ez bakarrik inplementazioan.
+<a href="https://owasp.org/Top10/A04_2021-Insecure_Design/" target="_blank">OWASP Top 10 - Insecure Design</a></p>
+<h3 id="adibideak_3">Adibideak<a class="headerlink" href="#adibideak_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Segurtasun-irizpiderik gabeko diseinua</li>
+<li>Mehatxuen eredurik ez</li>
+<li>Abusuzko erabileraren aurkako mekanismorik ez</li>
+</ul>
+<h3 id="prebentzioa_3">Prebentzioa<a class="headerlink" href="#prebentzioa_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Segurtasuna hasieratik kontuan hartu diseinuan</li>
+<li>Mehatxuen ereduak egin</li>
+<li>Abusu-kasuak identifikatu eta prebenitu</li>
+</ul>
+<h3 id="erronkak_3">Erronkak<a class="headerlink" href="#erronkak_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/insecure_design/">Insecure Design</a></li>
+</ul>
+<h2 id="5-konfigurazio-oker-eta-ahula-security-misconfiguration">5. Konfigurazio oker eta ahula (Security Misconfiguration)<a class="headerlink" href="#5-konfigurazio-oker-eta-ahula-security-misconfiguration" title="Permanent link">&para;</a></h2>
+<p>Segurtasun-konfigurazio egokirik ez izatea edo konfigurazio okerrak izatea.
+<a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/" target="_blank">OWASP Top 10 - Security Misconfiguration</a></p>
+<h3 id="adibideak_4">Adibideak<a class="headerlink" href="#adibideak_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Konfigurazio lehenetsiak aldatu gabe uztea</li>
+<li>Mezuen erakuspen detaileak erakustea</li>
+<li>Segurtasun-neurri osagarriak aktibatu gabe uztea</li>
+</ul>
+<h3 id="prebentzioa_4">Prebentzioa<a class="headerlink" href="#prebentzioa_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Konfigurazio seguru bat ezarri</li>
+<li>Automatizatu konfigurazioa</li>
+<li>Eguneratu eta berrikusi konfigurazioa maiz</li>
+</ul>
+<h3 id="erronkak_4">Erronkak<a class="headerlink" href="#erronkak_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/security_misconfiguration/">Security Misconfiguration</a></li>
+</ul>
+<h2 id="6-konponente-bulnerable-eta-zaharkituak-vulnerable-and-outdated-components">6. Konponente bulnerable eta zaharkituak (Vulnerable and Outdated Components)<a class="headerlink" href="#6-konponente-bulnerable-eta-zaharkituak-vulnerable-and-outdated-components" title="Permanent link">&para;</a></h2>
+<p>Hirugarreneko liburutegi eta osagaietan dauden ahultasunak.
+<a href="https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/" target="_blank">OWASP Top 10 - Vulnerable and Outdated Components</a></p>
+<h3 id="adibideak_5">Adibideak<a class="headerlink" href="#adibideak_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ezagutzen diren ahultasunen berri ez izatea</li>
+<li>Eguneraketarik gabe uztea</li>
+<li>Osagai ez seguruak erabiltzea</li>
+</ul>
+<h3 id="prebentzioa_5">Prebentzioa<a class="headerlink" href="#prebentzioa_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Osagaiak eguneratu maiz</li>
+<li>Ez erabili osagai zaharkiturik</li>
+<li>Eskaneatu osagaiak ahultasunen bila</li>
+</ul>
+<h3 id="erronkak_5">Erronkak<a class="headerlink" href="#erronkak_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../ariketak/vulnerable_and_outdated_components.md">Vulnerable and Outdated Components</a></li>
+</ul>
+<h2 id="7-autentifikazio-akatsak-identification-and-authentication-failures">7. Autentifikazio-akatsak (Identification and Authentication Failures)<a class="headerlink" href="#7-autentifikazio-akatsak-identification-and-authentication-failures" title="Permanent link">&para;</a></h2>
+<p>Erabiltzaileak identifikatu eta autentifikatzeko arazoak.
+<a href="https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/" target="_blank">OWASP Top 10 - Identification and Authentication Failures</a></p>
+<h3 id="adibideak_6">Adibideak<a class="headerlink" href="#adibideak_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pasahitz ahulak onartzea</li>
+<li>Saio-kudeaketa txarra</li>
+<li>Autentifikazio-funtzionaltasun ahulak</li>
+</ul>
+<h3 id="prebentzioa_6">Prebentzioa<a class="headerlink" href="#prebentzioa_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Inplementatu autentifikazio anizkoitza (2FA)</li>
+<li>Erabili pasahitz-politika sendoak</li>
+<li>Egiaztatu saio-identifikatzaileak</li>
+</ul>
+<h3 id="erronkak_6">Erronkak<a class="headerlink" href="#erronkak_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../ariketak/identification_and_authentication_failures.md">Identification and Authentication Failures</a></li>
+</ul>
+<h2 id="8-datuak-eta-datuen-osotasunaren-galera-software-and-data-integrity-failures">8. Datuak eta datuen osotasunaren galera (Software and Data Integrity Failures)<a class="headerlink" href="#8-datuak-eta-datuen-osotasunaren-galera-software-and-data-integrity-failures" title="Permanent link">&para;</a></h2>
+<p>Datuen osotasuna eta jatorriaren ziurtasuna arriskuan jartzen direnean.
+<a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/" target="_blank">OWASP Top 10 - Software and Data Integrity Failures</a></p>
+<h3 id="adibideak_7">Adibideak<a class="headerlink" href="#adibideak_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kode edo datu aldaketa baimenik gabe</li>
+<li>Erabiltzailearen sarrerak egiaztatu gabe</li>
+<li>Sinadura digitalik gabeko kodeak</li>
+</ul>
+<h3 id="prebentzioa_7">Prebentzioa<a class="headerlink" href="#prebentzioa_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Erabili sinadura digitalak</li>
+<li>Egiaztatu kode eta datuen jatorria</li>
+<li>Inplementatu osotasunaren egiaztapena</li>
+</ul>
+<h3 id="erronkak_7">Erronkak<a class="headerlink" href="#erronkak_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../ariketak/software_and_data_integrity_failures.md">Software and Data Integrity Failures</a></li>
+</ul>
+<h2 id="9-segurtasunaren-monitorizazio-falta-security-logging-and-monitoring-failures">9. Segurtasunaren monitorizazio falta (Security Logging and Monitoring Failures)<a class="headerlink" href="#9-segurtasunaren-monitorizazio-falta-security-logging-and-monitoring-failures" title="Permanent link">&para;</a></h2>
+<p>Erasoak detektatu eta erantzuteko gaitasun falta.
+<a href="https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/" target="_blank">OWASP Top 10 - Security Logging and Monitoring Failures</a></p>
+<h3 id="adibideak_8">Adibideak<a class="headerlink" href="#adibideak_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Erregistroak gordetzeko konfiguraziorik ez</li>
+<li>Alertarik ez jasotzea</li>
+<li>Erantzun-prozedurarik ez izatea</li>
+</ul>
+<h3 id="prebentzioa_8">Prebentzioa<a class="headerlink" href="#prebentzioa_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ezarri erregistro-sistema egokia</li>
+<li>Konfiguretu alerta automatikoak</li>
+<li>Planifikatu erantzun-prozedurak</li>
+</ul>
+<h3 id="erronkak_8">Erronkak<a class="headerlink" href="#erronkak_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../ariketak/security_logging_and_monitoring_failures.md">Security Logging and Monitoring Failures</a></li>
+</ul>
+<h2 id="10-zerbitzariaren-aldeko-eskaera-faltsuketa-server-side-request-forgery-ssrf">10. Zerbitzariaren aldeko eskaera-faltsuketa (Server-Side Request Forgery - SSRF)<a class="headerlink" href="#10-zerbitzariaren-aldeko-eskaera-faltsuketa-server-side-request-forgery-ssrf" title="Permanent link">&para;</a></h2>
+<p>Erasotzaileak zerbitzariak barne-sarean egindako eskaerak kontrolatzen dituenean.
+<a href="https://owasp.org/Top10/A10_2021-Server_Side_Request_Forgery/" target="_blank">OWASP Top 10 - Server-Side Request Forgery</a></p>
+<h3 id="adibideak_9">Adibideak<a class="headerlink" href="#adibideak_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Barne-zerbitzuei eskaerak egitea</li>
+<li>Konfigurazio-informazioa eskuratzea</li>
+<li>Barne-sareko baliabideetara sartzea</li>
+</ul>
+<h3 id="prebentzioa_9">Prebentzioa<a class="headerlink" href="#prebentzioa_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Egiaztatu eta iragazi sarrerako URL guztiak</li>
+<li>Erabili zerrenda zuri bat onartutako helbideentzako</li>
+<li>Ezarri konexio-mugen eta denbora-mugen politika</li>
+</ul>
+<h3 id="erronkak_9">Erronkak<a class="headerlink" href="#erronkak_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../ariketak/server_side_request_forgery/">Server-Side Request Forgery</a></li>
+</ul>
+<h2 id="hurrengo-urratsak">Hurrengo urratsak<a class="headerlink" href="#hurrengo-urratsak" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../eraso_defentsak/injekzioak.md">Injekzioen aurkako defentsak</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Igo goraino
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../scripts/checkboxes.js"></script>
+      
+        <script src="../../javascripts/sidebar.js"></script>
+      
+    
+  </body>
+</html>

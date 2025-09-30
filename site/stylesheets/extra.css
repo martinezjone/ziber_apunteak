@@ -1,0 +1,103 @@
+/* Custom heading styles */
+
+/* H2 (##) */
+h2 {
+    color: #004c95; /* azul corporativo */
+    border-bottom: 2px solid #e95f15;
+    padding-bottom: 0.2em;
+    margin-top: 1.5em;
+}
+  
+/* H3 (###) */
+h3 {
+    color: #e95f15; /* naranja corporativo */
+    margin-top: 1.2em;
+}
+  
+.md-header {
+    background-color: #1984c2;
+}
+  
+/* Center all images inside markdown content */
+.md-typeset img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos para el menú lateral colapsable */
+/* Mostrar los elementos del menú de nivel superior */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav > .md-nav__list {
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Ocultar submenús por defecto */
+.md-nav--primary .md-nav__item--nested .md-nav .md-nav__list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    padding-left: 1.2em;
+    border-left: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Estilo para los títulos de los menús anidados */
+.md-nav--primary .md-nav__item--nested > .md-nav > .md-nav__title {
+    position: relative;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    margin: 0.2rem 0;
+    border-radius: 0.2rem;
+    transition: background-color 0.2s;
+}
+
+/* Flecha indicadora */
+.md-nav--primary .md-nav__item--nested > .md-nav > .md-nav__title .nav-arrow {
+    content: '▶';
+    display: block;
+    float: right;
+    margin-left: 0.5em;
+    transition: transform 0.2s;
+    color: rgba(0,0,0,0.54);
+    font-size: 0.8em;
+    line-height: 1.5;
+}
+
+/* Estilo cuando el menú está expandido */
+.md-nav--primary .md-nav__item--nested > .md-nav[data-md-toggle="true"] > .md-nav__list {
+    max-height: 1000px !important;
+    display: block !important;
+}
+
+.md-nav--primary .md-nav__item--nested > .md-nav[data-md-toggle="true"] > .md-nav__title::after {
+    transform: rotate(90deg);
+    color: #e95f15;
+}
+
+/* Efecto hover en los títulos */
+.md-nav--primary .md-nav__item--nested > .md-nav > .md-nav__title:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* Asegurar que los enlaces dentro de los títulos sean clickeables */
+.md-nav--primary .md-nav__item--nested > .md-nav > .md-nav__title a {
+    pointer-events: auto;
+}
+
+/* Mostrar el menú activo */
+.md-nav--primary .md-nav__item--active > .md-nav > .md-nav__list,
+.md-nav--primary .md-nav__item--active > .md-nav > .md-nav__list .md-nav__item--active > .md-nav > .md-nav__list {
+    max-height: 1000px !important;
+    display: block !important;
+}
+
+/* Mostrar flecha en el menú activo */
+.md-nav--primary .md-nav__item--active > .md-nav > .md-nav__title::after {
+    transform: rotate(90deg);
+    color: #e95f15;
+}

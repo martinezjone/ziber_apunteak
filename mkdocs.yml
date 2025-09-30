@@ -1,0 +1,60 @@
+site_name: Zibersegurtasuna Web Garapenean - 2025-2026
+theme:
+  name: material
+  language: eu
+  logo: images/logo.png
+  favicon: http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - navigation.instant
+    - navigation.expand # Esto permite expandir/colapsar, pero necesitamos ajustar el CSS
+  palette:
+    - scheme: default
+      primary: '#004c95'
+      accent: '#e95f15'
+    - scheme: slate
+      primary: '#004c95'
+      accent: '#e95f15'
+      toggle:
+        icon: material/weather-night
+        name: Modu iluna
+extra_css:
+- stylesheets/extra.css
+extra_javascript:
+- scripts/checkboxes.js
+- javascripts/sidebar.js
+plugins:
+- search
+markdown_extensions:
+- admonition
+- pymdownx.tasklist:          # ← nuevo
+    clickable_checkbox: true  #  hace los checkboxes interactivos
+    custom_checkbox: true     #  usa los iconos de Material
+- toc:
+    permalink: true
+- footnotes
+- tables
+nav:
+  - Hasiera: index.md
+  - '1. Oinarriak eta mehatxu arruntak':
+    - '1.1. Web Garapenean Zibersegurtasunaren Sarrera': oinarriak_mehatxuak/sarrera.md
+    - '1.2. Webaren funtzionamenduaren oinarriak': oinarriak_mehatxuak/web_oinarriak.md
+    - '1.3. Web Hacking-erako sarrera': oinarriak_mehatxuak/web_hacking_sarrera.md
+    - '1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)': oinarriak_mehatxuak/owasp_top10.md
+  - '2. Eraso eta defentsa oinarrizkoak':
+    - '2.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
+    - '2.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
+    - '2.3. Sarbide-kontrola eta konfigurazio segurua': eraso_defentsak/sarbide_kontrola.md
+  - '3. Datuen babesa eta tresna praktikoak':
+    - '3.1. Datu sentikorren babesa': datu_babesa/datu_sentikorrak.md
+    - '3.2. APIen eta dependentzien segurtasuna': datu_babesa/api_segurtasuna.md
+    - '3.3. Tresna praktikoen sarrera': datu_babesa/tresnak.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
