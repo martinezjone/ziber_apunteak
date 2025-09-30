@@ -851,36 +851,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
+  <a href="#adibideak" class="md-nav__link">
     <span class="md-ellipsis">
-      Introducción
+      Adibideak:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#objetivos-del-ejercicio" class="md-nav__link">
+  <a href="#prebentsioa" class="md-nav__link">
     <span class="md-ellipsis">
-      Objetivos del Ejercicio
+      Prebentsioa
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tareas" class="md-nav__link">
+  <a href="#erronkak" class="md-nav__link">
     <span class="md-ellipsis">
-      Tareas
+      Erronkak
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#estekak" class="md-nav__link">
     <span class="md-ellipsis">
-      Recursos
+      Estekak
     </span>
   </a>
   
@@ -903,24 +903,22 @@
 
 
 <h1 id="server-side-request-forgery-ssrf">Server-Side Request Forgery (SSRF)<a class="headerlink" href="#server-side-request-forgery-ssrf" title="Permanent link">&para;</a></h1>
-<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
-<p>La falsificación de solicitudes del lado del servidor (SSRF) ocurre cuando un atacante puede hacer que el servidor realice solicitudes a recursos internos o externos. Esta categoría es nueva en el OWASP Top 10 2021, ocupando el décimo puesto.</p>
-<h2 id="objetivos-del-ejercicio">Objetivos del Ejercicio<a class="headerlink" href="#objetivos-del-ejercicio" title="Permanent link">&para;</a></h2>
+<p>SSRF erasoetan, erasotzaileak zerbitzari bati kanpoko edo barne baliabideak lerrokatzeko eskaerak egitera behartzen du. Arrisku nagusia aplikazioak barneko baliabide kritikoetara sartzea (esaterako, AWS metadata zerbitzura), soilik zerbitzarian bertan eskura daitezkeen zerbitzuetara. </p>
+<h3 id="adibideak">Adibideak:<a class="headerlink" href="#adibideak" title="Permanent link">&para;</a></h3>
+<h3 id="prebentsioa">Prebentsioa<a class="headerlink" href="#prebentsioa" title="Permanent link">&para;</a></h3>
+<p>Kasu honetan prebentsioa izan behar du bai zerbitzarian bai aplikazio geruzan ere.</p>
+<p>Adibidez zerbitzari geruzan ondorengo pausu hauek eman beharko lirateke:
+- Sare bereizietan urruneko baliabideetara sartzeko funtzionalitatearen arabera, SSRFen inpaktua murrizteko</p>
 <ul>
-<li>Comprender los vectores de ataque SSRF</li>
-<li>Aprender a identificar vulnerabilidades SSRF</li>
-<li>Implementar protecciones contra SSRF</li>
+<li>Firewall-politikak "lehenespen gisa ukatu" edo sarera sartzeko kontrol-arauak betearazi, intraneteko trafiko guztia blokeatzeko, funtsezkoa izan ezik.</li>
 </ul>
-<h2 id="tareas">Tareas<a class="headerlink" href="#tareas" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Identificar puntos finales que realizan solicitudes</li>
-<li>Probar la validación de URLs</li>
-<li>Evaluar el filtrado de direcciones IP</li>
-</ol>
-<h2 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<p>Eta aplikazio geruzatik aldiz beste hauek beste gauza askoren gain:
+- Konpondu eta baliozkotu bezeroak emandako sarrera-datu guztiak
+- Bete URL eskema, ataka eta helburua, onartutako item-zerrenda positibo baten bidez</p>
+<h2 id="erronkak">Erronkak<a class="headerlink" href="#erronkak" title="Permanent link">&para;</a></h2>
+<h2 id="estekak">Estekak<a class="headerlink" href="#estekak" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/">OWASP SSRF</a></li>
-<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">OWASP SSRF Prevention Cheat Sheet</a></li>
+<li><a href="https://owasp.org/Top10/es/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/">OWASP Server-Side Request Forgery (SSRF)</a></li>
 </ul>
 
 
