@@ -135,9 +135,13 @@ Ezarri cookie-aren parametro seguruak session_set_cookie_params() erabiliz sessi
     session_destroy();
 ```
 
-### CSRF babesa (PHP) — oinarrizko tokena
+**Adibide osoa:** [Erregistro eta login adibidea](https://docs.google.com/document/d/1j83cl_MlJhWtYmZ23zq5j8KSEYi5__Vn4wWyj5mY6LM/edit?usp=sharing)
 
-Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian.
+## CSRF babesa (PHP) — oinarrizko tokena
+
+Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian. Token honi esker, zerbitzariak ziurtatu dezake formularioa zure webgunetik etorri dela, eta ez beste webgune batetik, CSRF erasoei aurre eginez
+
+Token hauk bakarrik erabiliko ditugu gure formularioek metodo POST, PUT edo DELETE dutenean.
 
 ```php
     // PHP saioaren barruan, token bat sortu eta saioan gorde:
@@ -152,7 +156,6 @@ Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian.
         }
         return $_SESSION['csrf_token'];
     }
-
 
 
     // Formulari bakoitzean sartu token hau hidden input batekin:
