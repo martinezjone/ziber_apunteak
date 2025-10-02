@@ -107,9 +107,17 @@ Ezarri cookie-aren parametro seguruak session_set_cookie_params() erabiliz sessi
     session_start();
 ```
 
-**session_regenerate_id(true) **
+**session_regenerate_id() **
+`session_regenerate_id()` funtzioa  deitu behar da une kritikoetan, adibidez:
 
+- Erabiltzailea autentifikatu bezain laster (saioa hasi).
+- Erabiltzailearen pribilegioak aldatzen direnean (adibidez, baimenak igotzean edo eremu sentikorretara sartzean).
+- Saioan informazio sentikorra gordetzen denean.
 
+```php
+    session_start();
+    session_regenerate_id(true); // genera un nuevo ID y elimina el antiguo
+```
 
 ### Saioa itxi (logout) modu seguruan
 
