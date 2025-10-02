@@ -10,15 +10,16 @@
 
 ### Nola gorde pasahitzak (PHP)
 
-PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual/es/function.password-hash.php) eta [password_verify()](https://www.php.net/manual/es/function.password-verify.php) funtzioak erabiltzen dira; PHPk automatikoki gatza kudeatzen du, beraz ez da gatza eskuz sortu behar.
+PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual/es/function.password-hash.php) eta [password_verify()](https://www.php.net/manual/es/function.password-verify.php) funtzioak erabiltzen dira; PHPk automatikoki gatza (salt) kudeatzen du, beraz ez da gatza (salt) hori eskuz sortu behar.
+
+Modu lehenetsian PHP-k bcrypt erabiltzen du, baina Argon2 erabili daiteke ere zure zerbitzariak horretarako prest egotekotan.
 
 #### Sortu eta gorde pasahitza (erregistratzean)
 
 ```php
-    // register.php (adibidea)
     $password = $_POST['password']; // beti balidatu/egiaztatu lehenago
 
-    // PASSWORD_DEFAULT erabil dezakezu (gaur egungo bertsioan bcrypt edo hobea izango da)
+    // PASSWORD_DEFAULT erabil dezakezu (gaur egungo bertsioan bcrypt-en bidez egiten da)
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Gorde $hash datu-basera (PDO erabiliz)
@@ -26,10 +27,35 @@ PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual
     $stmt->execute([':email' => $_POST['email'], ':hash' => $hash]);
 ```
 
+```php
+    // Argon2 erabiltzeko adibidea. Ahak izatekotan Argon2Id erabiltzea gomendatzen da.
+    $hash = password_hash($password, PASSWORD_ARGON2ID);
+```
+	
 #### Egiaztatu pasahitza sartzean
+
 
 ```php
     // login.php
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE email = :email LIMIT 1");
+    $stmt->execute([':email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($password, $user['password_hash'])) {
+    // Arrakastaz egiaztatu
+        // Saioa hasi, etab.
+    } else {
+        // Ez da pasahitza berdina
+    }
+```
+
+**password_needs_rehash() funtzioaren erabilera**
+
+```php
+    // login.php - Adibide honetan, erabiltzaileak login egiten duen bakoitzean konfirmatuko du ia erabiltzen duen hash "obsoleto" dagoen, eta egotekotan berriro hasheatuko luke.
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -47,7 +73,7 @@ PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual
         }
         // Saioa hasi, etab.
     } else {
-        // Ok
+         // Ez da pasahitza berdina
     }
 ```
 
@@ -57,6 +83,10 @@ PHP-n bcrypt edo Argon2 erabiltzeko [password_hash()](https://www.php.net/manual
 - Erabil ezazu password strength meter frontend-era baina ez itxi onartu indarrez: informatu bakarrik.
 - Konta-itzali politikak (lockout) edo tasa-mugak (rate limiting) sartu saiakerak gehiegi badira.
 - Beti erabili TLS/HTTPS.
+
+- Ez erabili md5() eta sha1(). Ez dira seguruak, eta hiztegi/rainbow tableekin apurtzeko oso errazak dira.
+- Ez gorde pasahitzik testu lauan.
+- Ez asmatu zure hash/enkriptazio sistema propioa.
 
 ## Saioen Kudeaketa Segurua
 
@@ -76,6 +106,10 @@ Ezarri cookie-aren parametro seguruak session_set_cookie_params() erabiliz sessi
     session_set_cookie_params($cookieParams);
     session_start();
 ```
+
+**session_regenerate_id(true) **
+
+
 
 ### Saioa itxi (logout) modu seguruan
 
