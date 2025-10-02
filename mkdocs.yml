@@ -58,7 +58,7 @@ nav:
   - '3. Eraso eta defentsa oinarrizkoak':
     - '3.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
     - '3.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
-    - '3.3. Sarbide-kontrola eta konfigurazio segurua': eraso_defentsak/sarbide_kontrola.md
+  # - '3.3. Sarbide-kontrola eta konfigurazio segurua': eraso_defentsak/sarbide_kontrola.md
   # - '4. Datuen babesa eta tresna praktikoak':
   #   - '4.1. Datu sentikorren babesa': datu_babesa/datu_sentikorrak.md
   #   - '4.2. APIen eta dependentzien segurtasuna': datu_babesa/api_segurtasuna.md

@@ -925,17 +925,17 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#csrf-babesa-php-oinarrizko-tokena" class="md-nav__link">
     <span class="md-ellipsis">
       CSRF babesa (PHP) — oinarrizko tokena
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1098,17 +1098,17 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#csrf-babesa-php-oinarrizko-tokena" class="md-nav__link">
     <span class="md-ellipsis">
       CSRF babesa (PHP) — oinarrizko tokena
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1248,8 +1248,10 @@
 <span class="x">    session_destroy();</span>
 </code></pre></div>
 
-<h3 id="csrf-babesa-php-oinarrizko-tokena">CSRF babesa (PHP) — oinarrizko tokena<a class="headerlink" href="#csrf-babesa-php-oinarrizko-tokena" title="Permanent link">&para;</a></h3>
-<p>Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian.</p>
+<p><strong>Adibide osoa:</strong> <a href="https://docs.google.com/document/d/1j83cl_MlJhWtYmZ23zq5j8KSEYi5__Vn4wWyj5mY6LM/edit?usp=sharing">Erregistro eta login adibidea</a></p>
+<h2 id="csrf-babesa-php-oinarrizko-tokena">CSRF babesa (PHP) — oinarrizko tokena<a class="headerlink" href="#csrf-babesa-php-oinarrizko-tokena" title="Permanent link">&para;</a></h2>
+<p>Sortu CSRF token bat formulario bakoitzerako eta egiaztatu zerbitzarian. Token honi esker, zerbitzariak ziurtatu dezake formularioa zure webgunetik etorri dela, eta ez beste webgune batetik, CSRF erasoei aurre eginez</p>
+<p>Token hauk bakarrik erabiliko ditugu gure formularioek metodo POST, PUT edo DELETE dutenean.</p>
 <div class="codehilite"><pre><span></span><code><span class="x">    // PHP saioaren barruan, token bat sortu eta saioan gorde:</span>
 
 <span class="x">    // session_start() beti lehenengo lerroan!</span>
@@ -1262,7 +1264,6 @@
 <span class="x">        }</span>
 <span class="x">        return $_SESSION[&#39;csrf_token&#39;];</span>
 <span class="x">    }</span>
-
 
 
 <span class="x">    // Formulari bakoitzean sartu token hau hidden input batekin:</span>

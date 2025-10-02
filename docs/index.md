@@ -25,9 +25,9 @@ Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek seg
 ### [3. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak/)
 - [Injekzioen aurkako defentsak](eraso_defentsak/injekzioak/)
 - [Autentifikazio eta saioen segurtasuna](eraso_defentsak/autentifikazioa/)
-- [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola/)
+<!-- - [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola/)
 
-<!-- ### [4. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
+ ### [4. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
 - [Datu sentikorren babesa](datu_babesa/datu_sentikorrak/)
 - [APIen eta dependentzien segurtasuna](datu_babesa/api_segurtasuna/)
 - [Tresna praktikoen sarrera](datu_babesa/tresnak/) -->
