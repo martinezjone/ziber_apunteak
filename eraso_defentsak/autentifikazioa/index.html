@@ -1137,12 +1137,12 @@
 <li><strong>Pribatutasuna</strong>: Legezko erabiltzaileek ere ezingo lituzkete pasahitzak ikusi (erabat) — hori printzipio bat da.</li>
 </ul>
 <h3 id="nola-gorde-pasahitzak-php">Nola gorde pasahitzak (PHP)<a class="headerlink" href="#nola-gorde-pasahitzak-php" title="Permanent link">&para;</a></h3>
-<p>PHP-n bcrypt edo Argon2 erabiltzeko <a href="https://www.php.net/manual/es/function.password-hash.php">password_hash()</a> eta <a href="https://www.php.net/manual/es/function.password-verify.php">password_verify()</a> funtzioak erabiltzen dira; PHPk automatikoki gatza kudeatzen du, beraz ez da gatza eskuz sortu behar.</p>
+<p>PHP-n bcrypt edo Argon2 erabiltzeko <a href="https://www.php.net/manual/es/function.password-hash.php">password_hash()</a> eta <a href="https://www.php.net/manual/es/function.password-verify.php">password_verify()</a> funtzioak erabiltzen dira; PHPk automatikoki gatza (salt) kudeatzen du, beraz ez da gatza (salt) hori eskuz sortu behar.</p>
+<p>Modu lehenetsian PHP-k bcrypt erabiltzen du, baina Argon2 erabili daiteke ere zure zerbitzariak horretarako prest egotekotan.</p>
 <h4 id="sortu-eta-gorde-pasahitza-erregistratzean">Sortu eta gorde pasahitza (erregistratzean)<a class="headerlink" href="#sortu-eta-gorde-pasahitza-erregistratzean" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="x">    // register.php (adibidea)</span>
-<span class="x">    $password = $_POST[&#39;password&#39;]; // beti balidatu/egiaztatu lehenago</span>
+<div class="codehilite"><pre><span></span><code><span class="x">    $password = $_POST[&#39;password&#39;]; // beti balidatu/egiaztatu lehenago</span>
 
-<span class="x">    // PASSWORD_DEFAULT erabil dezakezu (gaur egungo bertsioan bcrypt edo hobea izango da)</span>
+<span class="x">    // PASSWORD_DEFAULT erabil dezakezu (gaur egungo bertsioan bcrypt-en bidez egiten da)</span>
 <span class="x">    $hash = password_hash($password, PASSWORD_DEFAULT);</span>
 
 <span class="x">    // Gorde $hash datu-basera (PDO erabiliz)</span>
@@ -1150,8 +1150,29 @@
 <span class="x">    $stmt-&gt;execute([&#39;:email&#39; =&gt; $_POST[&#39;email&#39;], &#39;:hash&#39; =&gt; $hash]);</span>
 </code></pre></div>
 
+<div class="codehilite"><pre><span></span><code><span class="x">    // Argon2 erabiltzeko adibidea. Ahak izatekotan Argon2Id erabiltzea gomendatzen da.</span>
+<span class="x">    $hash = password_hash($password, PASSWORD_ARGON2ID);</span>
+</code></pre></div>
+
 <h4 id="egiaztatu-pasahitza-sartzean">Egiaztatu pasahitza sartzean<a class="headerlink" href="#egiaztatu-pasahitza-sartzean" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="x">    // login.php</span>
+<span class="x">    $email = $_POST[&#39;email&#39;];</span>
+<span class="x">    $password = $_POST[&#39;password&#39;];</span>
+
+<span class="x">    $stmt = $pdo-&gt;prepare(&quot;SELECT id, password_hash FROM users WHERE email = :email LIMIT 1&quot;);</span>
+<span class="x">    $stmt-&gt;execute([&#39;:email&#39; =&gt; $email]);</span>
+<span class="x">    $user = $stmt-&gt;fetch(PDO::FETCH_ASSOC);</span>
+
+<span class="x">    if ($user &amp;&amp; password_verify($password, $user[&#39;password_hash&#39;])) {</span>
+<span class="x">    // Arrakastaz egiaztatu</span>
+<span class="x">        // Saioa hasi, etab.</span>
+<span class="x">    } else {</span>
+<span class="x">        // Ez da pasahitza berdina</span>
+<span class="x">    }</span>
+</code></pre></div>
+
+<p><strong>password_needs_rehash() funtzioaren erabilera</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="x">    // login.php - Adibide honetan, erabiltzaileak login egiten duen bakoitzean konfirmatuko du ia erabiltzen duen hash &quot;obsoleto&quot; dagoen, eta egotekotan berriro hasheatuko luke.</span>
 <span class="x">    $email = $_POST[&#39;email&#39;];</span>
 <span class="x">    $password = $_POST[&#39;password&#39;];</span>
 
@@ -1169,7 +1190,7 @@
 <span class="x">        }</span>
 <span class="x">        // Saioa hasi, etab.</span>
 <span class="x">    } else {</span>
-<span class="x">        // Ok</span>
+<span class="x">         // Ez da pasahitza berdina</span>
 <span class="x">    }</span>
 </code></pre></div>
 
@@ -1178,7 +1199,14 @@
 <li>Gutxienez 8+ karaktere (hobeto 12+), baina fokusatu passphrases-ean eta kontuan izanda erraztasuna erabiltzailearen esperientzian.</li>
 <li>Erabil ezazu password strength meter frontend-era baina ez itxi onartu indarrez: informatu bakarrik.</li>
 <li>Konta-itzali politikak (lockout) edo tasa-mugak (rate limiting) sartu saiakerak gehiegi badira.</li>
-<li>Beti erabili TLS/HTTPS.</li>
+<li>
+<p>Beti erabili TLS/HTTPS.</p>
+</li>
+<li>
+<p>Ez erabili md5() eta sha1(). Ez dira seguruak, eta hiztegi/rainbow tableekin apurtzeko oso errazak dira.</p>
+</li>
+<li>Ez gorde pasahitzik testu lauan.</li>
+<li>Ez asmatu zure hash/enkriptazio sistema propioa.</li>
 </ul>
 <h2 id="saioen-kudeaketa-segurua">Saioen Kudeaketa Segurua<a class="headerlink" href="#saioen-kudeaketa-segurua" title="Permanent link">&para;</a></h2>
 <h3 id="cookie-seguruak-konfiguratzea">Cookie Seguruak Konfiguratzea<a class="headerlink" href="#cookie-seguruak-konfiguratzea" title="Permanent link">&para;</a></h3>
@@ -1193,6 +1221,17 @@
 <span class="x">    ];</span>
 <span class="x">    session_set_cookie_params($cookieParams);</span>
 <span class="x">    session_start();</span>
+</code></pre></div>
+
+<p>**session_regenerate_id() **
+<code>session_regenerate_id()</code> funtzioa  deitu behar da une kritikoetan, adibidez:</p>
+<ul>
+<li>Erabiltzailea autentifikatu bezain laster (saioa hasi).</li>
+<li>Erabiltzailearen pribilegioak aldatzen direnean (adibidez, baimenak igotzean edo eremu sentikorretara sartzean).</li>
+<li>Saioan informazio sentikorra gordetzen denean.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="x">    session_start();</span>
+<span class="x">    session_regenerate_id(true); // genera un nuevo ID y elimina el antiguo</span>
 </code></pre></div>
 
 <h3 id="saioa-itxi-logout-modu-seguruan">Saioa itxi (logout) modu seguruan<a class="headerlink" href="#saioa-itxi-logout-modu-seguruan" title="Permanent link">&para;</a></h3>
